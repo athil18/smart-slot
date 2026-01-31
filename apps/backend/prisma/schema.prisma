@@ -1,0 +1,124 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  password     String
+  name         String?
+  phone        String?  // Contact number for verification
+  role         String   @default("student") // student | staff | scientist | politician | entrepreneur | retiree | admin
+  accessLevel  Int      @default(1) // 1=basic, 2=staff, 3=advanced, 4=vip, 5=admin
+  organization String?  // MIT, Stanford, Government Office, etc.
+  department   String?  // Chemistry, Engineering, Finance, etc.
+  preferences  String?  // JSON string for UI preferences
+  
+  // Verification System
+  verificationStatus String   @default("pending") // pending | verified | rejected
+  verificationData   String?  // JSON: role-specific fields (studentId, businessReg, etc.)
+  verifiedAt         DateTime?
+  verifiedBy         String?  // Admin user ID who verified
+  rejectionReason    String?
+  
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  tasks        Task[]
+  staffSlots   Slot[]        @relation("StaffSlots")
+  appointments Appointment[] @relation("ClientAppointments")
+}
+
+// enum removed for sqlite compatibility
+
+model Task {
+  id          String     @id @default(cuid())
+  title       String
+  description String?
+  status      String     @default("draft") // draft, active, completed
+  userId      String
+  user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  deletedAt   DateTime?
+
+  @@index([userId])
+  @@index([deletedAt])
+}
+
+model Resource {
+  id        String   @id @default(cuid())
+  name      String
+  type      String   @default("room") // room, equipment, other
+  capacity  Int      @default(1)
+  status    String   @default("available") // available, maintenance, out_of_service
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+  version   Int      @default(1)
+  usageCount Int     @default(0)
+  lastMaintenanceDate DateTime?
+  maintenanceRecords ResourceMaintenance[]
+  slots     Slot[]
+
+  @@index([deletedAt])
+}
+
+model ResourceMaintenance {
+    id String @id @default(cuid())
+    resourceId String
+    resource Resource @relation(fields: [resourceId], references: [id])
+    type String // routine, repair, upgrade
+    scheduledDate DateTime
+    status String @default("pending") // pending, completed, cancelled
+    notes String?
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([resourceId])
+}
+
+model Slot {
+  id           String        @id @default(cuid())
+  staffId      String
+  staff        User          @relation("StaffSlots", fields: [staffId], references: [id])
+  resourceId   String?
+  resource     Resource?     @relation(fields: [resourceId], references: [id])
+  startTime    DateTime
+  endTime      DateTime
+  status       String        @default("available") // available, booked, cancelled
+  isRecurring  Boolean       @default(false)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  deletedAt    DateTime?
+  version      Int           @default(1)
+  smartScore   Float         @default(0)
+  demandPrediction String?   // low, medium, high
+  appointments Appointment[]
+
+  @@index([staffId])
+  @@index([resourceId])
+  @@index([startTime])
+  @@index([endTime])
+}
+
+model Appointment {
+  id        String   @id @default(cuid())
+  clientId  String
+  client    User     @relation("ClientAppointments", fields: [clientId], references: [id])
+  slotId    String
+  slot      Slot     @relation(fields: [slotId], references: [id])
+  priority  String   @default("normal") // normal, urgent
+  notes     String?
+  status    String   @default("confirmed") // confirmed, cancelled, rescheduled
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([clientId])
+  @@index([slotId])
+  @@index([status])
+}
