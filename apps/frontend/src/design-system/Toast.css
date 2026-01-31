@@ -1,0 +1,106 @@
+.ds-toast-container {
+    position: fixed;
+    top: var(--space-4);
+    right: var(--space-4);
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    max-width: 24rem;
+    /* 384px */
+    pointer-events: none;
+}
+
+.ds-toast {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background-color: var(--color-bg-primary);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-lg);
+    border: var(--border-width) solid;
+    pointer-events: auto;
+    animation: ds-slide-in var(--transition-normal);
+}
+
+.ds-toast-icon {
+    font-size: var(--font-size-h3);
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: var(--font-weight-bold);
+}
+
+.ds-toast-message {
+    flex: 1;
+    font-size: var(--font-size-body);
+    color: var(--color-text-primary);
+}
+
+.ds-toast-close {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    padding: var(--space-1);
+    border-radius: var(--border-radius-sm);
+    transition: all var(--transition-fast);
+    line-height: 1;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.ds-toast-close:hover {
+    background-color: var(--color-neutral-100);
+}
+
+.ds-toast-close:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+}
+
+/* ==================== VARIANTS ==================== */
+
+.ds-toast--success {
+    border-color: var(--color-success-500);
+}
+
+.ds-toast--success .ds-toast-icon {
+    background-color: var(--color-success-100);
+    color: var(--color-success-700);
+}
+
+.ds-toast--error {
+    border-color: var(--color-error-500);
+}
+
+.ds-toast--error .ds-toast-icon {
+    background-color: var(--color-error-100);
+    color: var(--color-error-700);
+}
+
+.ds-toast--info {
+    border-color: var(--color-primary-500);
+}
+
+.ds-toast--info .ds-toast-icon {
+    background-color: var(--color-primary-100);
+    color: var(--color-primary-700);
+}
+
+@keyframes ds-slide-in {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

@@ -1,0 +1,70 @@
+.browse-slots {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+}
+
+.filters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-4);
+    align-items: flex-end;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.slots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-6);
+}
+
+.slot-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.slot-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.slot-time {
+    font-size: var(--font-size-h3);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary-500);
+}
+
+.status-badge {
+    font-size: 0.75rem;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--border-radius-sm);
+    text-transform: uppercase;
+    font-weight: var(--font-weight-bold);
+}
+
+.status-available {
+    background-color: var(--color-success-50);
+    color: var(--color-success-700);
+}
+
+.status-booked {
+    background-color: var(--color-neutral-100);
+    color: var(--color-neutral-500);
+}
+
+.slot-details {
+    font-size: var(--font-size-caption);
+    line-height: var(--line-height-body);
+}
+
+.slot-date {
+    margin-top: var(--space-2);
+    color: var(--color-text-secondary);
+}

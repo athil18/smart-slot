@@ -1,0 +1,272 @@
+/* RetireeDashboard Styles - Senior-Friendly Design */
+.retiree-dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header - Large, Readable Text */
+.retiree-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.retiree-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.header-subtitle {
+    font-size: 1.25rem;
+    color: #94a3b8;
+}
+
+/* Hero Image Gallery */
+.retiree-hero-gallery {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: repeat(2, 140px);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.hero-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.hero-card:hover {
+    transform: scale(1.02);
+}
+
+.hero-card.main {
+    grid-row: span 2;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.3));
+}
+
+.hero-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    z-index: 1;
+}
+
+.hero-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: rgba(34, 197, 94, 0.2);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #22c55e;
+    margin-bottom: 0.5rem;
+}
+
+.hero-content h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.25rem;
+}
+
+.hero-content h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.hero-content p {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Stats - Clear Visual Indicators */
+.retiree-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: #94a3b8;
+}
+
+/* Sections */
+.retiree-section {
+    margin-bottom: 2rem;
+}
+
+.retiree-section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+    font-size: 1rem;
+    color: #94a3b8;
+    margin-bottom: 1.5rem;
+}
+
+/* Slots Grid */
+.slots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.slot-card {
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    transition: all 0.2s ease;
+}
+
+.slot-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(34, 197, 94, 0.3);
+}
+
+.slot-datetime {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+}
+
+.slot-date {
+    font-size: 1rem;
+    color: #22c55e;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.slot-time {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.slot-resource {
+    font-size: 1rem;
+    color: #e2e8f0;
+    margin-bottom: 1rem;
+}
+
+/* Help Section */
+.retiree-help {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.help-card {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    text-align: center;
+}
+
+.help-icon {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.help-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.5rem;
+}
+
+.help-card p {
+    font-size: 0.875rem;
+    color: #94a3b8;
+    margin-bottom: 1rem;
+}
+
+/* Loading */
+.loading-message {
+    padding: 3rem;
+    text-align: center;
+    font-size: 1.25rem;
+    color: #94a3b8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .retiree-hero-gallery {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    .hero-card.main {
+        grid-row: span 1;
+        height: 200px;
+    }
+
+    .hero-card.secondary {
+        height: 150px;
+    }
+
+    .retiree-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .retiree-help {
+        grid-template-columns: 1fr;
+    }
+
+    .slots-grid {
+        grid-template-columns: 1fr;
+    }
+}

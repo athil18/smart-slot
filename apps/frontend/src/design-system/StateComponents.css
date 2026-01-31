@@ -1,0 +1,67 @@
+.ds-state-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-12);
+    text-align: center;
+    background-color: var(--color-bg-primary);
+    border-radius: var(--border-radius-lg);
+    border: var(--border-width) solid var(--color-border);
+    min-height: 300px;
+}
+
+.ds-state-icon {
+    font-size: 4rem;
+    margin-bottom: var(--space-4);
+}
+
+.ds-state-message {
+    font-size: var(--font-size-h3);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-6);
+    max-width: 400px;
+}
+
+/* Loading / Skeleton Styles */
+.ds-skeleton {
+    background: linear-gradient(90deg,
+            var(--color-neutral-100) 25%,
+            var(--color-neutral-50) 50%,
+            var(--color-neutral-100) 75%);
+    background-size: 200% 100%;
+    animation: ds-skeleton-loading 1.5s infinite;
+    border-radius: var(--border-radius-md);
+}
+
+@keyframes ds-skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.ds-skeleton-header {
+    width: 60%;
+    height: 2.5rem;
+    margin-bottom: var(--space-8);
+}
+
+.ds-skeleton-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-4);
+    width: 100%;
+}
+
+.ds-skeleton-card {
+    height: 200px;
+}
+
+.ds-error-state {
+    border-color: var(--color-error-100);
+    background-color: var(--color-error-50);
+}

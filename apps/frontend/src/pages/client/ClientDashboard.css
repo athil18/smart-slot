@@ -1,0 +1,66 @@
+.client-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+}
+
+.page-header h1 {
+    font-size: var(--font-size-h1);
+    color: var(--color-text-primary);
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--space-8);
+}
+
+@media (max-width: 900px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.view-all {
+    text-decoration: none;
+    font-size: var(--font-size-caption);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-primary-500);
+}
+
+.appointment-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.appointment-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-3);
+    background-color: var(--color-bg-secondary);
+    border-radius: var(--border-radius-md);
+    border: var(--border-width) solid var(--color-border);
+}
+
+.appt-date {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-body);
+}
+
+.appt-time {
+    font-size: var(--font-size-caption);
+    color: var(--color-text-primary);
+}
+
+.appt-meta {
+    font-size: var(--font-size-caption);
+    color: var(--color-text-secondary);
+}
+
+.quick-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}

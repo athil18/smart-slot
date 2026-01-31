@@ -1,0 +1,108 @@
+/* TimeSlotPicker Styles */
+.time-slot-picker {
+    width: 100%;
+}
+
+.slots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 0.75rem;
+}
+
+.time-slot {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 56px;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
+    color: #fff;
+}
+
+.time-slot:hover:not(.unavailable) {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #6366f1;
+    transform: translateY(-2px);
+}
+
+.time-slot:active:not(.unavailable) {
+    transform: scale(0.98);
+}
+
+.time-slot:focus {
+    outline: 3px solid #6366f1;
+    outline-offset: 2px;
+}
+
+/* Selected state */
+.time-slot.selected {
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    border-color: #6366f1;
+}
+
+.check-icon {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    font-size: 1rem;
+    color: #fff;
+}
+
+/* Unavailable state */
+.time-slot.unavailable {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.05);
+    color: #64748b;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.unavailable-badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    font-size: 0.625rem;
+    padding: 0.125rem 0.375rem;
+    background: rgba(239, 68, 68, 0.2);
+    border-radius: 4px;
+    color: #ef4444;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.slot-time {
+    font-size: 0.875rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .slots-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 0.5rem;
+    }
+
+    .time-slot {
+        min-height: 48px;
+        padding: 0.75rem 1rem;
+    }
+
+    .slot-time {
+        font-size: 0.8125rem;
+    }
+}
+
+/* Accessibility - Large mode */
+.accessible-mode .time-slot {
+    min-height: 64px;
+    padding: 1.25rem 1.75rem;
+}
+
+.accessible-mode .slot-time {
+    font-size: 1rem;
+}

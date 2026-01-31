@@ -1,0 +1,114 @@
+.my-appointments {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.tabs {
+    display: flex;
+    gap: var(--space-2);
+    border-bottom: var(--border-width) solid var(--color-border);
+    padding-bottom: var(--space-2);
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    border-radius: var(--border-radius-md);
+    transition: all var(--transition-fast);
+}
+
+.tab-btn:hover {
+    color: var(--color-text-primary);
+    background-color: var(--color-neutral-100);
+}
+
+.tab-btn.active {
+    color: var(--color-primary-500);
+    background-color: var(--color-primary-50);
+}
+
+.appointments-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.appt-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-6);
+}
+
+@media (max-width: 600px) {
+    .appt-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.appt-info {
+    display: flex;
+    flex: 1;
+    gap: var(--space-8);
+    align-items: center;
+}
+
+@media (max-width: 800px) {
+    .appt-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-2);
+    }
+}
+
+.appt-date {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-body);
+}
+
+.appt-time {
+    color: var(--color-primary-500);
+    font-weight: var(--font-weight-medium);
+}
+
+.appt-details {
+    font-size: var(--font-size-caption);
+    color: var(--color-text-secondary);
+    display: flex;
+    gap: var(--space-4);
+    align-items: center;
+}
+
+.status-pill {
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    font-weight: var(--font-weight-bold);
+}
+
+.status-confirmed {
+    background-color: var(--color-success-100);
+    color: var(--color-success-700);
+}
+
+.status-cancelled {
+    background-color: var(--color-error-100);
+    color: var(--color-error-700);
+}
+
+.appt-actions {
+    display: flex;
+    gap: var(--space-2);
+}
+
+.btn-danger {
+    color: var(--color-error-500) !important;
+}

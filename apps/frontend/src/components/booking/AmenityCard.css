@@ -1,0 +1,240 @@
+/* AmenityCard Component Styles */
+.amenity-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    min-height: 300px;
+}
+
+/* Image Container */
+.amenity-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.amenity-background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.amenity-background-image.loaded {
+    opacity: 0.3;
+}
+
+.amenity-card:hover .amenity-background-image.loaded {
+    opacity: 0.4;
+    transform: scale(1.05);
+    transition: all 0.5s ease;
+}
+
+/* Overlay for better text readability */
+.amenity-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.7), rgba(30, 41, 59, 0.6));
+    backdrop-filter: blur(2px);
+}
+
+.amenity-icon-fallback {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 8rem;
+    opacity: 0.2;
+}
+
+/* Gradient glow on hover */
+.amenity-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.amenity-card:hover::before {
+    opacity: 1;
+}
+
+.amenity-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(99, 102, 241, 0.6);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 40px rgba(99, 102, 241, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.amenity-card:active {
+    transform: translateY(-4px) scale(1.01);
+}
+
+.amenity-card:focus {
+    outline: 3px solid #6366f1;
+    outline-offset: 2px;
+}
+
+/* Icon */
+.amenity-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.amenity-card:hover .amenity-icon {
+    transform: scale(1.15);
+}
+
+/* Name */
+.amenity-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Availability Badge */
+.amenity-badge {
+    margin-top: 1rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    backdrop-filter: blur(8px);
+    position: relative;
+    z-index: 2;
+}
+
+.available-count {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: white;
+    line-height: 1;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.available-label {
+    font-size: 0.625rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 0.125rem;
+}
+
+/* Type-specific styling */
+.amenity-type-lab {
+    border-color: #3b82f6;
+}
+
+.amenity-type-lab:hover {
+    border-color: #60a5fa;
+}
+
+.amenity-type-room {
+    border-color: #10b981;
+}
+
+.amenity-type-room:hover {
+    border-color: #34d399;
+}
+
+.amenity-type-equipment {
+    border-color: #8b5cf6;
+}
+
+.amenity-type-equipment:hover {
+    border-color: #a78bfa;
+}
+
+.amenity-type-gym {
+    border-color: #f59e0b;
+}
+
+.amenity-type-gym:hover {
+    border-color: #fbbf24;
+}
+
+.amenity-type-studio {
+    border-color: #ec4899;
+}
+
+.amenity-type-studio:hover {
+    border-color: #f472b6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .amenity-card {
+        min-width: 100px;
+        min-height: 140px;
+        padding: 1rem;
+    }
+
+    .amenity-icon {
+        font-size: 2.5rem;
+    }
+
+    .amenity-name {
+        font-size: 0.875rem;
+    }
+}
+
+/* Accessibility - Large font mode */
+.accessible-mode .amenity-card {
+    min-width: 160px;
+    min-height: 180px;
+    padding: 2rem;
+}
+
+.accessible-mode .amenity-icon {
+    font-size: 4rem;
+}
+
+.accessible-mode .amenity-name {
+    font-size: 1.125rem;
+}
+
+.accessible-mode .available-count {
+    font-size: 1.5rem;
+}
